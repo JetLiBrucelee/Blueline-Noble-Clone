@@ -410,10 +410,12 @@ export default function Contact() {
                     <p>{office.zip}</p>
                   </div>
                   <div className="mt-4 pt-4 border-t border-[hsl(210,15%,14%)] space-y-2">
-                    <a href={`tel:${office.phone}`} className="flex items-center gap-2 text-xs text-[hsl(210,10%,55%)] hover:text-[hsl(199,89%,60%)] transition-colors">
-                      <Phone size={12} className="text-[hsl(199,89%,48%)]" />
-                      {office.phone}
-                    </a>
+                    {office.phone && (
+                      <a href={`tel:${office.phone}`} className="flex items-center gap-2 text-xs text-[hsl(210,10%,55%)] hover:text-[hsl(199,89%,60%)] transition-colors">
+                        <Phone size={12} className="text-[hsl(199,89%,48%)]" />
+                        {office.phone}
+                      </a>
+                    )}
                     <a href={`mailto:${office.email}`} className="flex items-center gap-2 text-xs text-[hsl(210,10%,55%)] hover:text-[hsl(199,89%,60%)] transition-colors">
                       <Mail size={12} className="text-[hsl(199,89%,48%)]" />
                       {office.email}
