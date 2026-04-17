@@ -42,14 +42,14 @@ const projects = [
   },
   {
     id: 4,
-    title: "OML 78 Manifold & Jumper Campaign",
-    location: "West Africa",
+    title: "GOM Block 78 Manifold & Jumper Campaign",
+    location: "Gulf of Mexico",
     year: "2022",
     client: "JV Partners",
     value: "$45M",
     category: "ROV Operations",
     status: "Completed",
-    desc: "ROV-based installation of 8 subsea manifolds and 24 flexible jumpers in the deepwater block OML 78 development.",
+    desc: "ROV-based installation of 8 subsea manifolds and 24 flexible jumpers in a deepwater Gulf of Mexico block development.",
     image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80&auto=format&fit=crop",
   },
   {

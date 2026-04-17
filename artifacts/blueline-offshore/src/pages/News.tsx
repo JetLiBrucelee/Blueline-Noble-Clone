@@ -27,7 +27,7 @@ const news = [
     category: "Fleet",
     date: "March 15, 2025",
     image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&auto=format&fit=crop",
-    excerpt: "Blueline Offshore has taken delivery of its newest semi-submersible crane vessel, Blueline Titan II, expanding our heavy lift capability to meet growing demand across the North Sea and West Africa.",
+    excerpt: "Blueline Offshore has taken delivery of its newest semi-submersible crane vessel, Blueline Titan II, expanding our heavy lift capability to meet growing demand across the North Sea and Asia Pacific.",
     featured: false,
   },
   {

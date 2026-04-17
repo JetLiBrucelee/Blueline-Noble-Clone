@@ -18,7 +18,7 @@ const leadership = [
   {
     name: "Marcus O. Adeyemi",
     title: "Chief Operations Officer",
-    bio: "Former Royal Navy officer. 25 years managing complex marine operations across West Africa and the North Sea.",
+    bio: "Former Royal Navy officer. 25 years managing complex marine operations across the North Sea and Gulf of Mexico.",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80&auto=format&fit=crop",
   },
   {
@@ -33,7 +33,7 @@ const milestones = [
   { year: "2003", event: "Founded in New York as a regional marine diving contractor" },
   { year: "2007", event: "Expanded into North Sea operations; first FPSO hook-up project" },
   { year: "2010", event: "Launched ROV division; acquired first DP2 construction vessel" },
-  { year: "2013", event: "Opened West Africa regional office; 1,000-employee milestone" },
+  { year: "2013", event: "Expanded international operations; 1,000-employee milestone reached" },
   { year: "2016", event: "First deepwater project in the Gulf of Mexico exceeding 2,000m depth" },
   { year: "2019", event: "ISO 9001:2015 and 14001 dual-certification achieved globally" },
   { year: "2021", event: "Expanded fleet to 35 vessels; entered Southeast Asia market" },

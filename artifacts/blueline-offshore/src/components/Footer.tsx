@@ -159,8 +159,8 @@ export default function Footer() {
               <p className="text-xs text-[hsl(210,10%,50%)] uppercase tracking-wider font-display font-600 mb-1">
                 Emergency 24/7
               </p>
-              <a href="tel:+18005550199" className="text-[hsl(199,89%,60%)] font-display font-700 text-lg hover:text-white transition-colors">
-                +1 (800) 555-0199
+              <a href="tel:+17745648357" className="text-[hsl(199,89%,60%)] font-display font-700 text-lg hover:text-white transition-colors">
+                (774) 564-8357
               </a>
             </div>
           </div>

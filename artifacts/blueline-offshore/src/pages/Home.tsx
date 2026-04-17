@@ -80,7 +80,7 @@ const featuredProjects = [
   },
   {
     title: "Subsea Riser Replacement",
-    location: "West Africa",
+    location: "Gulf of Mexico",
     year: "2022",
     image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80&auto=format&fit=crop",
     category: "Subsea Engineering",
@@ -344,7 +344,7 @@ export default function Home() {
       <section className="py-24 relative overflow-hidden" data-testid="section-video-banner">
         <div className="absolute inset-0">
           <img
-            src="https://i.ytimg.com/vi/PCGeQdZpO6A/maxresdefault.jpg"
+            src="https://media.gettyimages.com/id/1489647460/video/offshore-industry-oil-and-gas-production-petroleum-pipeline-stock-video.jpg?s=640x640&k=20&c=24oSnvZSXykotB28wnGMTR-MilUtLHjesti8j_GsZXQ="
             alt=""
             className="w-full h-full object-cover"
           />

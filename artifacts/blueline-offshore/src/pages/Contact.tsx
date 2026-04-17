@@ -30,15 +30,6 @@ const offices = [
     email: "apac@bluelineoffshore.com",
     image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80&auto=format&fit=crop",
   },
-  {
-    city: "Lagos",
-    country: "Nigeria",
-    address: "Plot 5 Victoria Island",
-    zip: "Lagos, Nigeria",
-    phone: "+234 1 555 0198",
-    email: "africa@bluelineoffshore.com",
-    image: "https://images.unsplash.com/photo-1566438480900-0609be27a4be?w=600&q=80&auto=format&fit=crop",
-  },
 ];
 
 const services = [
@@ -127,20 +118,20 @@ export default function Contact() {
           {[
             { icon: Phone, label: "Call Us", value: "(774) 564-8357", href: "tel:+17745648357" },
             { icon: Mail, label: "Email Us", value: "support@bluelineoffshore.com", href: "mailto:support@bluelineoffshore.com" },
-            { icon: Clock, label: "Emergency 24/7", value: "+1 (800) 555-0199", href: "tel:+18005550199" },
+            { icon: Clock, label: "Emergency 24/7", value: "(774) 564-8357", href: "tel:+17745648357" },
           ].map(({ icon: Icon, label, value, href }) => (
             <a
               key={label}
               href={href}
               data-testid={`contact-bar-${label.toLowerCase().replace(/\s+/g, "-")}`}
-              className="flex items-center gap-4 text-white hover:text-white/90 transition-colors"
+              className="flex items-center gap-4 text-white hover:text-white/90 transition-colors min-w-0"
             >
               <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center flex-shrink-0">
                 <Icon size={22} />
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="text-white/70 text-xs font-display font-600 tracking-wide">{label}</div>
-                <div className="font-display font-700 text-lg">{value}</div>
+                <div className="font-display font-700 text-base break-all">{value}</div>
               </div>
             </a>
           ))}
@@ -384,8 +375,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <div className="text-[hsl(210,10%,45%)] text-xs mb-1">Emergency</div>
-                    <a href="tel:+18005550199" className="text-[hsl(199,89%,60%)] text-sm font-display font-600 hover:text-white transition-colors">
-                      +1 (800) 555-0199
+                    <a href="tel:+17745648357" className="text-[hsl(199,89%,60%)] text-sm font-display font-600 hover:text-white transition-colors">
+                      (774) 564-8357
                     </a>
                   </div>
                 </div>
