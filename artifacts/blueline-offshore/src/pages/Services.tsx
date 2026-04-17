@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Anchor, Waves, Cpu, Wrench, Globe2, BarChart3, CheckCircle2, ArrowRight } from "lucide-react";
 import { Link, useLocation } from "wouter";
@@ -106,7 +106,7 @@ export default function Services() {
   const heroRef = useScrollReveal<HTMLDivElement>();
   const [location] = useLocation();
 
-  const scrollToHash = () => {
+  const scrollToHash = useCallback(() => {
     const hash = window.location.hash;
     if (hash) {
       const el = document.querySelector(hash);
@@ -116,13 +116,13 @@ export default function Services() {
         }, 120);
       }
     }
-  };
+  }, []);
 
   useEffect(() => {
     scrollToHash();
     window.addEventListener("hashchange", scrollToHash);
     return () => window.removeEventListener("hashchange", scrollToHash);
-  }, [location]);
+  }, [location, scrollToHash]);
 
   return (
     <div className="pt-20">
