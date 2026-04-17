@@ -1,5 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Anchor, Gauge, Ruler, Users, ArrowRight, MapPin } from "lucide-react";
+import { Anchor, Gauge, Ruler, Users, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
 const vessels = [
@@ -182,10 +182,6 @@ export default function Fleet() {
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-2">
                     <h3 className="font-display font-800 text-white text-xl">{vessel.name}</h3>
-                    <div className="flex items-center gap-1 text-[hsl(210,10%,50%)] text-xs">
-                      <MapPin size={11} />
-                      {vessel.flag}
-                    </div>
                   </div>
                   <p className="text-[hsl(210,10%,58%)] text-sm leading-relaxed mb-5">{vessel.desc}</p>
 

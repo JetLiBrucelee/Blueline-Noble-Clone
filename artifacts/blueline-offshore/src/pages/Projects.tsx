@@ -14,7 +14,7 @@ const projects = [
     category: "Marine Construction",
     status: "Completed",
     desc: "Full FPSO hook-up and commissioning scope including 12 risers, mooring system installation, and 180km of flexible flowlines.",
-    image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80&auto=format&fit=crop",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJSpkXm9Ounq1cL2UpgSyIwPO7MwIfr4t8w&s",
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const projects = [
     category: "Pipeline Services",
     status: "Completed",
     desc: "Emergency replacement of 45km of high-pressure pipeline at 1,800m water depth using J-lay method and DP3 vessel.",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80&auto=format&fit=crop",
+    image: "https://i.ytimg.com/vi/F7qN7im-tLc/sddefault.jpg",
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ const projects = [
     category: "Subsea Engineering",
     status: "Completed",
     desc: "Design, fabrication, and installation of the world's first fully redundant subsea gas compression station at 300m depth.",
-    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80&auto=format&fit=crop",
+    image: "https://www.equinor.com/_next/image?url=https%3A%2F%2Fcdn.equinor.com%2Fimages%2Fh61q9gi9%2Fglobal%2F6c4b0210db19c0ee28c26bdb93bf6f3bf9206ec3-2560x1920.jpg%3Frect%3D0%2C237%2C2560%2C1446%26w%3D1184%26h%3D669%26q%3D100%26auto%3Dformat&w=3840&q=75",
   },
   {
     id: 4,
@@ -50,7 +50,7 @@ const projects = [
     category: "ROV Operations",
     status: "Completed",
     desc: "ROV-based installation of 8 subsea manifolds and 24 flexible jumpers in a deepwater Gulf of Mexico block development.",
-    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80&auto=format&fit=crop",
+    image: "https://ars.els-cdn.com/content/image/3-s2.0-B9780323906050000062-f01-06-9780323906050.jpg",
   },
   {
     id: 5,
@@ -74,7 +74,7 @@ const projects = [
     category: "Diving Operations",
     status: "Ongoing",
     desc: "Six-month saturation diving campaign performing pipeline crossings, tie-ins, and structural inspection across the Helix development.",
-    image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80&auto=format&fit=crop",
+    image: "https://i0.wp.com/johnclarkeonline.com/wp-content/uploads/2011/07/Picture1.png?fit=902%2C508&ssl=1",
   },
 ];
 
@@ -180,7 +180,9 @@ export default function Projects() {
                   <div className="flex items-center justify-between pt-4 border-t border-[hsl(210,15%,14%)]">
                     <div>
                       <div className="text-[hsl(210,10%,45%)] text-xs mb-0.5">Contract Value</div>
-                      <div className="font-display font-700 text-[hsl(199,89%,60%)] text-base">{project.value}</div>
+                      <Link href="/contact" className="font-display font-600 text-[hsl(199,89%,60%)] text-sm hover:underline">
+                        Contact for pricing
+                      </Link>
                     </div>
                     <Link href="/contact" className="flex items-center gap-2 text-[hsl(199,89%,60%)] text-sm font-600 hover:gap-3 transition-all opacity-0 group-hover:opacity-100">
                         Learn More <ArrowRight size={14} />
