@@ -343,12 +343,28 @@ export default function Home() {
       {/* ── VIDEO SECTION ── */}
       <section className="py-24 relative overflow-hidden" data-testid="section-video-banner">
         <div className="absolute inset-0">
-          <img
-            src="https://media.gettyimages.com/id/1489647460/video/offshore-industry-oil-and-gas-production-petroleum-pipeline-stock-video.jpg?s=640x640&k=20&c=24oSnvZSXykotB28wnGMTR-MilUtLHjesti8j_GsZXQ="
-            alt=""
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1920&q=80&auto=format&fit=crop"
             className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-[hsl(210,20%,8%)]/80" />
+          >
+            <source
+              src="https://assets.mixkit.co/videos/preview/mixkit-diver-under-the-water-4116-large.mp4"
+              type="video/mp4"
+            />
+            <source
+              src="https://assets.mixkit.co/videos/preview/mixkit-drone-flying-past-a-cargo-ship-11937-large.mp4"
+              type="video/mp4"
+            />
+            <source
+              src="https://assets.mixkit.co/videos/preview/mixkit-cargo-ship-sailing-in-the-sea-35347-large.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div className="absolute inset-0 bg-[hsl(210,20%,8%)]/75" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 mb-6">
