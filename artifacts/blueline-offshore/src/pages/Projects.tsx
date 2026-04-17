@@ -13,7 +13,7 @@ const projects = [
     category: "Marine Construction",
     status: "Completed",
     desc: "Full FPSO hook-up and commissioning scope including 12 risers, mooring system installation, and 180km of flexible flowlines.",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJSpkXm9Ounq1cL2UpgSyIwPO7MwIfr4t8w&s",
+    image: "/images/project-1-fpso.jpg",
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const projects = [
     category: "Pipeline Services",
     status: "Completed",
     desc: "Emergency replacement of 45km of high-pressure pipeline at 1,800m water depth using J-lay method and DP3 vessel.",
-    image: "https://i.ytimg.com/vi/F7qN7im-tLc/sddefault.jpg",
+    image: "/images/project-2-pipeline.jpg",
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const projects = [
     category: "Subsea Engineering",
     status: "Completed",
     desc: "Design, fabrication, and installation of the world's first fully redundant subsea gas compression station at 300m depth.",
-    image: "https://www.equinor.com/_next/image?url=https%3A%2F%2Fcdn.equinor.com%2Fimages%2Fh61q9gi9%2Fglobal%2F6c4b0210db19c0ee28c26bdb93bf6f3bf9206ec3-2560x1920.jpg%3Frect%3D0%2C237%2C2560%2C1446%26w%3D1184%26h%3D669%26q%3D100%26auto%3Dformat&w=3840&q=75",
+    image: "/images/project-3-compression.jpg",
   },
   {
     id: 4,
@@ -46,7 +46,7 @@ const projects = [
     category: "ROV Operations",
     status: "Completed",
     desc: "ROV-based installation of 8 subsea manifolds and 24 flexible jumpers in a deepwater Gulf of Mexico block development.",
-    image: "https://ars.els-cdn.com/content/image/3-s2.0-B9780323906050000062-f01-06-9780323906050.jpg",
+    image: "/images/project-4-manifold.jpg",
   },
   {
     id: 5,
@@ -68,7 +68,7 @@ const projects = [
     category: "Diving Operations",
     status: "Ongoing",
     desc: "Six-month saturation diving campaign performing pipeline crossings, tie-ins, and structural inspection across the Helix development.",
-    image: "https://i0.wp.com/johnclarkeonline.com/wp-content/uploads/2011/07/Picture1.png?fit=902%2C508&ssl=1",
+    image: "/images/project-6-diving.jpg",
   },
 ];
 
