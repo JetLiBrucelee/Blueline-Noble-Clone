@@ -321,7 +321,7 @@ export default function Home() {
             <div className="relative">
               <div className="relative rounded-xl overflow-hidden shadow-2xl" style={{ aspectRatio: "4/3" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80&auto=format&fit=crop"
+                  src="https://i.ytimg.com/vi/PCGeQdZpO6A/maxresdefault.jpg"
                   alt="Offshore operations"
                   className="w-full h-full object-cover"
                 />
