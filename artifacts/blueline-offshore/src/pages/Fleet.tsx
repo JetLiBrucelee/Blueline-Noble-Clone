@@ -111,7 +111,7 @@ export default function Fleet() {
       {/* Hero */}
       <section className="relative py-28 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1605745341112-85968b19335b?w=1920&q=80&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&q=80&auto=format&fit=crop"
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
         />
