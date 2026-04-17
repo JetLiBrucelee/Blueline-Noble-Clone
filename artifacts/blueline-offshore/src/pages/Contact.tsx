@@ -308,7 +308,7 @@ export default function Contact() {
                 </span>
               </div>
               <h2 className="font-display font-800 text-white text-3xl md:text-4xl mb-8">
-                Global Offices
+                Our Office
               </h2>
 
               {/* Embedded Map */}
