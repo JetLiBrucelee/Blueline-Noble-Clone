@@ -39,3 +39,4 @@ externalPort = 3001
 
 [userenv.shared]
 CONTACT_EMAIL = "support@bluelineoffshore.com"
+FROM_EMAIL = "Blueline Offshore <noreply@bluelineoffshore.com>"
