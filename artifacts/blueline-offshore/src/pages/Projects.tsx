@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { MapPin, Calendar, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
 const projects = [
@@ -159,16 +159,6 @@ export default function Projects() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <div className="flex items-center gap-4 text-xs text-[hsl(210,10%,50%)] mb-3">
-                    <span className="flex items-center gap-1.5">
-                      <MapPin size={11} className="text-[hsl(199,89%,48%)]" />
-                      {project.location}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <Calendar size={11} className="text-[hsl(199,89%,48%)]" />
-                      {project.year}
-                    </span>
-                  </div>
                   <h3 className="font-display font-700 text-white text-lg leading-snug mb-3">{project.title}</h3>
                   <p className="text-[hsl(210,10%,58%)] text-sm leading-relaxed mb-4 line-clamp-2">{project.desc}</p>
                   <div className="flex items-center justify-between pt-4 border-t border-[hsl(210,15%,14%)]">
