@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Blueline Offshore"
+version = "1.0.0"
+id = "artifacts/blueline-offshore"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20057
+
+[services.development]
+run = "pnpm --filter @workspace/blueline-offshore run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/blueline-offshore", "run", "build" ]
+publicDir = "artifacts/blueline-offshore/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20057"
+BASE_PATH = "/"
