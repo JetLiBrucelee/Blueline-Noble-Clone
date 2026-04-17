@@ -18,7 +18,7 @@ const services = [
       "Mooring and anchor installation",
       "Marine spread management",
     ],
-    image: "https://i.ytimg.com/vi/DmOZEt9DwRE/maxresdefault.jpg",
+    image: "https://images.unsplash.com/photo-1553697388-94e804e2f0f6?w=900&q=80&auto=format&fit=crop",
   },
   {
     id: "diving",
@@ -50,7 +50,7 @@ const services = [
       "Subsea controls & electrical",
       "Decommissioning engineering",
     ],
-    image: "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=900&q=80&auto=format&fit=crop",
   },
   {
     id: "rov",
@@ -82,7 +82,7 @@ const services = [
       "Pipeline repair and rehabilitation",
       "Decommissioning and removal",
     ],
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=900&q=80&auto=format&fit=crop",
   },
   {
     id: "project-management",
@@ -129,7 +129,7 @@ export default function Services() {
       {/* Hero */}
       <section className="relative py-28 overflow-hidden">
         <img
-          src="https://i.ytimg.com/vi/PCGeQdZpO6A/hqdefault.jpg"
+          src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1920&q=80&auto=format&fit=crop"
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
         />
