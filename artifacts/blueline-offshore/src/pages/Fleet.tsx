@@ -16,7 +16,7 @@ const vessels = [
     depth: "3,000m",
     status: "Active",
     desc: "Our flagship heavy lift vessel, purpose-built for the most demanding offshore installation campaigns. Features twin cranes and full saturation diving system.",
-    image: "https://images.unsplash.com/photo-1553697388-94e804e2f0f6?w=800&q=80&auto=format&fit=crop",
+    image: "https://i.ytimg.com/vi/PCGeQdZpO6A/hqdefault.jpg",
   },
   {
     id: 2,
@@ -31,13 +31,13 @@ const vessels = [
     depth: "300m Sat",
     status: "Active",
     desc: "Dedicated diving support vessel equipped with a 12-man saturation system, three work-class ROVs, and full survey suite.",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80&auto=format&fit=crop",
   },
   {
     id: 3,
     name: "Blueline Navigator",
     type: "Pipelay & Construction Vessel",
-    flag: "Singapore",
+    flag: "Panama",
     dp: "DP3",
     craneCapacity: "800T",
     decaArea: "2,400 m²",
@@ -46,7 +46,7 @@ const vessels = [
     depth: "2,500m",
     status: "Active",
     desc: "Versatile pipelay and construction vessel capable of S-lay, J-lay, and reel-lay operations with 12-inch pipe capacity.",
-    image: "https://images.unsplash.com/photo-1566438480900-0609be27a4be?w=800&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=800&q=80&auto=format&fit=crop",
   },
   {
     id: 4,
@@ -76,7 +76,7 @@ const vessels = [
     depth: "3,000m",
     status: "Active",
     desc: "One of the world's largest semi-submersible crane vessels, designed for ultra-heavy lift operations and decommissioning projects.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80&auto=format&fit=crop",
   },
   {
     id: 6,
@@ -91,7 +91,7 @@ const vessels = [
     depth: "2,000m",
     status: "Active",
     desc: "Flexible pipelay specialist carrying 5,000T carousel and capable of installing flowlines, umbilicals, and flexible risers.",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80&auto=format&fit=crop",
+    image: "https://i.ytimg.com/vi/DmOZEt9DwRE/maxresdefault.jpg",
   },
 ];
 
@@ -111,7 +111,7 @@ export default function Fleet() {
       {/* Hero */}
       <section className="relative py-28 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1553697388-94e804e2f0f6?w=1920&q=80&auto=format&fit=crop"
+          src="https://i.ytimg.com/vi/DmOZEt9DwRE/maxresdefault.jpg"
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
         />

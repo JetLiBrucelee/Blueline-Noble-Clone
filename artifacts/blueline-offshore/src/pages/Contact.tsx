@@ -12,24 +12,6 @@ const offices = [
     email: "support@bluelineoffshore.com",
     image: "https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&q=80&auto=format&fit=crop",
   },
-  {
-    city: "Aberdeen",
-    country: "United Kingdom",
-    address: "100 Union Street, 4th Floor",
-    zip: "Aberdeen, AB10 1HJ",
-    phone: "",
-    email: "support@bluelineoffshore.com",
-    image: "https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=600&q=80&auto=format&fit=crop",
-  },
-  {
-    city: "Singapore",
-    country: "Singapore",
-    address: "8 Shenton Way, #42-01",
-    zip: "Singapore 068811",
-    phone: "",
-    email: "support@bluelineoffshore.com",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80&auto=format&fit=crop",
-  },
 ];
 
 const services = [
@@ -390,14 +372,14 @@ export default function Contact() {
       <section className="py-16 bg-[hsl(210,22%,7%)]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-display font-800 text-white text-3xl">Regional Offices</h2>
+            <h2 className="font-display font-800 text-white text-3xl">Our Office</h2>
           </div>
-          <div ref={officesRef} className="reveal-up grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div ref={officesRef} className="reveal-up flex justify-center">
             {offices.map((office) => (
               <div
                 key={office.city}
                 data-testid={`card-office-${office.city.toLowerCase()}`}
-                className="gradient-card border border-[hsl(210,15%,16%)] rounded-xl overflow-hidden hover:border-[hsl(199,89%,48%)]/30 transition-all"
+                className="gradient-card border border-[hsl(210,15%,16%)] rounded-xl overflow-hidden hover:border-[hsl(199,89%,48%)]/30 transition-all w-full max-w-sm"
               >
                 <div className="aspect-video overflow-hidden">
                   <img src={office.image} alt={office.city} className="w-full h-full object-cover img-zoom" />
