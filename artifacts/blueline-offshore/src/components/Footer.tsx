@@ -102,17 +102,18 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               {[
-                "Marine Construction",
-                "Diving Operations",
-                "Subsea Engineering",
-                "ROV Operations",
-                "Pipeline Services",
-                "Project Management",
+                { label: "Marine Construction", href: "/services#marine-construction" },
+                { label: "Diving Operations", href: "/services#diving" },
+                { label: "Subsea Engineering", href: "/services#subsea" },
+                { label: "ROV Operations", href: "/services#rov" },
+                { label: "Pipeline Services", href: "/services#pipeline" },
+                { label: "Project Management", href: "/services#project-management" },
               ].map((service) => (
-                <li key={service}>
-                  <Link href="/services" className="text-[hsl(210,10%,55%)] text-sm hover:text-[hsl(199,89%,60%)] transition-colors flex items-center gap-2 group">
+                <li key={service.label}>
+                  <Link href={service.href} className="text-[hsl(210,10%,55%)] text-sm hover:text-[hsl(199,89%,60%)] transition-colors flex items-center gap-2 group"
+                      data-testid={`footer-service-${service.label.toLowerCase().replace(/\s+/g, "-")}`}>
                       <ArrowRight size={12} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-200" />
-                      {service}
+                      {service.label}
                     </Link>
                 </li>
               ))}

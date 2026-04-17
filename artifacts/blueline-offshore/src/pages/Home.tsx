@@ -567,9 +567,9 @@ export default function Home() {
             </button>
             <div style={{ aspectRatio: "16/9" }}>
               <iframe
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-                title="Blueline Offshore Corporate Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                src="https://www.youtube.com/embed/HqLX4ZjZAZ4"
+                title="How Does an Offshore Oil Platform Work?"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="w-full h-full"
               />
