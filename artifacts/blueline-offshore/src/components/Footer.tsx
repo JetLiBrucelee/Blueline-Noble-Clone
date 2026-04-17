@@ -19,7 +19,7 @@ export default function Footer() {
                 Request a Quote <ArrowRight size={16} />
               </Link>
             <a
-              href="tel:+12025550147"
+              href="tel:+17745648357"
               className="px-6 py-3 border border-white/50 text-white font-display font-600 text-sm tracking-wide rounded hover:bg-white/10 transition-colors"
               data-testid="footer-cta-call"
             >
@@ -129,18 +129,18 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-[hsl(199,89%,48%)] mt-0.5 flex-shrink-0" />
                 <span className="text-[hsl(210,10%,55%)] text-sm leading-relaxed">
-                  1200 Harbor Blvd, Suite 800<br />
-                  Houston, TX 77058, USA
+                  42 Broadway<br />
+                  New York, NY 10004, USA
                 </span>
               </li>
               <li>
                 <a
-                  href="tel:+12025550147"
+                  href="tel:+17745648357"
                   className="flex items-center gap-3 text-[hsl(210,10%,55%)] text-sm hover:text-[hsl(199,89%,60%)] transition-colors"
                   data-testid="footer-phone"
                 >
                   <Phone size={16} className="text-[hsl(199,89%,48%)] flex-shrink-0" />
-                  +1 (202) 555-0147
+                  (774) 564-8357
                 </a>
               </li>
               <li>

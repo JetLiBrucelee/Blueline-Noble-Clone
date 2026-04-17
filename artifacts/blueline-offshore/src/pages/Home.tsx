@@ -344,7 +344,7 @@ export default function Home() {
       <section className="py-24 relative overflow-hidden" data-testid="section-video-banner">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1553697388-94e804e2f0f6?w=1920&q=80&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1920&q=80&auto=format&fit=crop"
             alt=""
             className="w-full h-full object-cover"
           />
@@ -565,14 +565,24 @@ export default function Home() {
             >
               <X size={20} />
             </button>
-            <div style={{ aspectRatio: "16/9" }}>
-              <iframe
-                src="https://www.youtube.com/embed/HqLX4ZjZAZ4"
-                title="How Does an Offshore Oil Platform Work?"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+            <div style={{ aspectRatio: "16/9" }} className="bg-black">
+              <video
                 className="w-full h-full"
-              />
+                controls
+                autoPlay
+                playsInline
+                data-testid="video-player"
+              >
+                <source
+                  src="https://videos.pexels.com/video-files/3195394/3195394-uhd_2560_1440_25fps.mp4"
+                  type="video/mp4"
+                />
+                <source
+                  src="https://videos.pexels.com/video-files/2516159/2516159-uhd_2560_1440_30fps.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support HTML5 video.
+              </video>
             </div>
           </div>
         </div>

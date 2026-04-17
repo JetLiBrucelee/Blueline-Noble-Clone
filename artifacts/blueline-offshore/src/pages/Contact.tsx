@@ -4,11 +4,11 @@ import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
 
 const offices = [
   {
-    city: "Houston",
+    city: "New York",
     country: "USA (HQ)",
-    address: "1200 Harbor Blvd, Suite 800",
-    zip: "Houston, TX 77058",
-    phone: "+1 (202) 555-0147",
+    address: "42 Broadway",
+    zip: "New York, NY 10004",
+    phone: "(774) 564-8357",
     email: "support@bluelineoffshore.com",
     image: "https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&q=80&auto=format&fit=crop",
   },
@@ -72,13 +72,28 @@ export default function Contact() {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    setError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error((data as { error?: string }).error || "Failed to send message. Please try again.");
+      }
       setSubmitted(true);
-    }, 1500);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An unexpected error occurred.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -110,7 +125,7 @@ export default function Contact() {
       <section className="py-10 bg-[hsl(199,89%,38%)]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { icon: Phone, label: "Call Us", value: "+1 (202) 555-0147", href: "tel:+12025550147" },
+            { icon: Phone, label: "Call Us", value: "(774) 564-8357", href: "tel:+17745648357" },
             { icon: Mail, label: "Email Us", value: "support@bluelineoffshore.com", href: "mailto:support@bluelineoffshore.com" },
             { icon: Clock, label: "Emergency 24/7", value: "+1 (800) 555-0199", href: "tel:+18005550199" },
           ].map(({ icon: Icon, label, value, href }) => (
@@ -295,6 +310,15 @@ export default function Contact() {
                     )}
                   </button>
 
+                  {error && (
+                    <div
+                      data-testid="contact-error"
+                      className="px-4 py-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm text-center"
+                    >
+                      {error}
+                    </div>
+                  )}
+
                   <p className="text-[hsl(210,10%,45%)] text-xs text-center">
                     By submitting, you agree to our Privacy Policy. We respond within 24 hours.
                   </p>
@@ -317,7 +341,7 @@ export default function Contact() {
               {/* Embedded Map */}
               <div className="rounded-xl overflow-hidden mb-8 border border-[hsl(210,15%,16%)]" style={{ height: "280px" }}>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3466.4!2d-95.23!3d29.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDMzJzAwLjAiTiA5NcKwMTMnNDguMCJX!5e0!3m2!1sen!2sus!4v1000000000000!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.8684019454826!2d-74.01392502346057!3d40.70674137139453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a16b6b60ff7%3A0x4bf44b2f0a3e2f6!2s42%20Broadway%2C%20New%20York%2C%20NY%2010004%2C%20USA!5e0!3m2!1sen!2sus!4v1716000000000!5m2!1sen!2sus"
                   width="100%"
                   height="100%"
                   style={{ border: 0, filter: "invert(90%) hue-rotate(180deg)" }}
@@ -335,17 +359,17 @@ export default function Contact() {
                     <MapPin size={20} className="text-[hsl(199,89%,60%)]" />
                   </div>
                   <div>
-                    <div className="font-display font-700 text-white text-lg">Houston Headquarters</div>
+                    <div className="font-display font-700 text-white text-lg">New York Headquarters</div>
                     <div className="text-[hsl(210,10%,55%)] text-sm mt-1">
-                      1200 Harbor Blvd, Suite 800<br />Houston, TX 77058, USA
+                      42 Broadway<br />New York, NY 10004, USA
                     </div>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4 border-t border-[hsl(210,15%,14%)] pt-4">
                   <div>
                     <div className="text-[hsl(210,10%,45%)] text-xs mb-1">Main Line</div>
-                    <a href="tel:+12025550147" className="text-[hsl(199,89%,60%)] text-sm font-display font-600 hover:text-white transition-colors">
-                      +1 (202) 555-0147
+                    <a href="tel:+17745648357" className="text-[hsl(199,89%,60%)] text-sm font-display font-600 hover:text-white transition-colors">
+                      (774) 564-8357
                     </a>
                   </div>
                   <div>

@@ -30,3 +30,12 @@ externalPort = 80
 [[ports]]
 localPort = 20057
 externalPort = 3000
+
+[[ports]]
+localPort = 20058
+externalPort = 3001
+
+[userenv]
+
+[userenv.shared]
+CONTACT_EMAIL = "offshorehorizon@zohomail.com"

@@ -30,7 +30,7 @@ const leadership = [
 ];
 
 const milestones = [
-  { year: "2003", event: "Founded in Houston, Texas as a regional diving contractor" },
+  { year: "2003", event: "Founded in New York as a regional marine diving contractor" },
   { year: "2007", event: "Expanded into North Sea operations; first FPSO hook-up project" },
   { year: "2010", event: "Launched ROV division; acquired first DP2 construction vessel" },
   { year: "2013", event: "Opened West Africa regional office; 1,000-employee milestone" },
