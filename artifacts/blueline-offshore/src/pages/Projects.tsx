@@ -100,7 +100,7 @@ export default function Projects() {
             Our Projects
           </h1>
           <p className="text-[hsl(210,10%,70%)] text-xl max-w-2xl mx-auto">
-            A global track record of delivering complex offshore projects — on time, on budget, without compromise.
+            A global track record of delivering complex offshore projects, on time, on budget, without compromise.
           </p>
         </div>
       </section>
