@@ -126,13 +126,19 @@ export default function Footer() {
               Contact Us
             </h4>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <MapPin size={16} className="text-[hsl(199,89%,48%)] mt-0.5 flex-shrink-0" />
-                <span className="text-[hsl(210,10%,55%)] text-sm leading-relaxed">
-                  42 Broadway<br />
-                  New York, NY 10004, USA
-                </span>
-              </li>
+              {[
+                { line1: "42 Broadway", line2: "New York, NY 10004, USA" },
+                { line1: "4209 N Kings Hwy", line2: "Myrtle Beach, SC 29577, USA" },
+                { line1: "621 W 6th Ave", line2: "Anchorage, AK 99501, USA" },
+              ].map((addr) => (
+                <li key={addr.line2} className="flex items-start gap-3">
+                  <MapPin size={16} className="text-[hsl(199,89%,48%)] mt-0.5 flex-shrink-0" />
+                  <span className="text-[hsl(210,10%,55%)] text-sm leading-relaxed">
+                    {addr.line1}<br />
+                    {addr.line2}
+                  </span>
+                </li>
+              ))}
               <li>
                 <a
                   href="tel:+17745648357"
