@@ -223,7 +223,7 @@ export default function About() {
             </div>
             <h2 className="font-display font-800 text-white text-4xl md:text-5xl">Meet Our Leaders</h2>
           </div>
-          <div ref={teamRef} className="reveal-up grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div ref={teamRef} className="reveal-up grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {leadership.map((person) => (
               <div
                 key={person.name}

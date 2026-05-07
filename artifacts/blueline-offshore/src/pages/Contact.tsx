@@ -322,7 +322,7 @@ export default function Contact() {
               <div className="inline-flex items-center gap-2 mb-4">
                 <div className="h-px w-10 bg-[hsl(199,89%,48%)]" />
                 <span className="font-display text-xs font-600 tracking-[0.2em] text-[hsl(199,89%,60%)] uppercase">
-                  Find Us
+                  Our Offices
                 </span>
               </div>
               <h2 className="font-display font-800 text-white text-3xl md:text-4xl mb-8">
