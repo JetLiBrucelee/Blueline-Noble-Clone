@@ -4,33 +4,21 @@ import { Link } from "wouter";
 
 const leadership = [
   {
+    name: "Jeffrey Anderson",
+    title: "Founder / CEO",
+    bio: "Founder and driving force behind Blueline Offshore. Over 35 years in the offshore energy industry, growing the company from a regional diving contractor into a globally recognized offshore services firm.",
+    image: "/ceo-jeffrey-anderson.jpg",
+  },
+  {
     name: "James R. Whitfield",
-    title: "Chief Executive Officer",
-    bio: "30+ years in offshore industry. Former VP at Saipem and McDermott. Led company through its most ambitious expansion phase.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop&face=yes",
-  },
-  {
-    name: "Dr. Sarah Chen",
-    title: "Chief Technical Officer",
-    bio: "PhD in Ocean Engineering from MIT. Pioneer in deepwater ROV technology with 45+ patents to her name.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80&auto=format&fit=crop",
-  },
-  {
-    name: "Marcus O. Adeyemi",
-    title: "Chief Operations Officer",
-    bio: "Former Royal Navy officer. 25 years managing complex marine operations across the North Sea and Gulf of Mexico.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80&auto=format&fit=crop",
-  },
-  {
-    name: "Elena V. Kozlov",
-    title: "VP Safety & Compliance",
-    bio: "15 years driving HSEQ excellence. Architect of Blueline's Zero Harm program, achieving 10M+ LTI-free manhours.",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80&auto=format&fit=crop",
+    title: "Chief Operating Officer",
+    bio: "30+ years in offshore operations management. Oversees all operational divisions and vessel deployments, ensuring every project is delivered on time and to the highest safety standards.",
+    image: "/coo-james-whitfield.jpg",
   },
 ];
 
 const milestones = [
-  { year: "2003", event: "Founded in New York as a regional marine diving contractor" },
+  { year: "1987", event: "Founded in New York as a regional marine diving contractor" },
   { year: "2007", event: "Expanded into North Sea operations; first FPSO hook-up project" },
   { year: "2010", event: "Launched ROV division; acquired first DP2 construction vessel" },
   { year: "2013", event: "Expanded international operations; 1,000-employee milestone reached" },
@@ -41,7 +29,7 @@ const milestones = [
 ];
 
 const values = [
-  { icon: Shield, title: "Safety", desc: "Zero Harm is not a target — it is our culture, embedded in every task, every day." },
+  { icon: Shield, title: "Safety", desc: "Zero Harm is not a target, it is our culture, embedded in every task, every day." },
   { icon: Award, title: "Excellence", desc: "We hold ourselves to the highest standards in technical execution and client delivery." },
   { icon: Heart, title: "Integrity", desc: "Transparency, honesty, and ethical conduct define how we operate at every level." },
   { icon: Users, title: "People", desc: "Our greatest asset is our team. We invest in talent, wellbeing, and professional growth." },
@@ -106,7 +94,7 @@ export default function About() {
                   </div>
                   <p className="text-[hsl(210,10%,62%)] leading-relaxed">
                     To deliver world-class offshore services that enable our clients to safely and efficiently
-                    develop the world's energy resources — creating lasting value for all stakeholders while
+                    develop the world's energy resources, creating lasting value for all stakeholders while
                     protecting people and the environment.
                   </p>
                 </div>
@@ -117,7 +105,7 @@ export default function About() {
                     <h3 className="font-display font-700 text-white text-lg">Our Vision</h3>
                   </div>
                   <p className="text-[hsl(210,10%,62%)] leading-relaxed">
-                    To be the most trusted and technically advanced offshore solutions provider in the world —
+                    To be the most trusted and technically advanced offshore solutions provider in the world,
                     setting the global benchmark for safety, innovation, and sustainable operations.
                   </p>
                 </div>
@@ -235,7 +223,7 @@ export default function About() {
             </div>
             <h2 className="font-display font-800 text-white text-4xl md:text-5xl">Meet Our Leaders</h2>
           </div>
-          <div ref={teamRef} className="reveal-up grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div ref={teamRef} className="reveal-up grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {leadership.map((person) => (
               <div
                 key={person.name}

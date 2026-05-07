@@ -48,7 +48,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-[hsl(210,10%,55%)] text-sm leading-relaxed mb-6">
-              A world-class offshore services company delivering excellence in marine construction, diving operations, and subsea engineering since 2003.
+              A world-class offshore services company delivering excellence in marine construction, diving operations, and subsea engineering since 1987.
             </p>
             <div className="flex items-center gap-3">
               {[

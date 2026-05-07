@@ -12,6 +12,24 @@ const offices = [
     email: "support@bluelineoffshore.com",
     image: "https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&q=80&auto=format&fit=crop",
   },
+  {
+    city: "Myrtle Beach",
+    country: "USA",
+    address: "4209 N Kings Hwy",
+    zip: "Myrtle Beach, SC 29577",
+    phone: "(774) 564-8357",
+    email: "support@bluelineoffshore.com",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80&auto=format&fit=crop",
+  },
+  {
+    city: "Anchorage",
+    country: "USA",
+    address: "621 W 6th Ave",
+    zip: "Anchorage, AK 99501",
+    phone: "(774) 564-8357",
+    email: "support@bluelineoffshore.com",
+    image: "https://images.unsplash.com/photo-1531168558166-78dd1e35e671?w=600&q=80&auto=format&fit=crop",
+  },
 ];
 
 const services = [
@@ -89,7 +107,7 @@ export default function Contact() {
             Contact Us
           </h1>
           <p className="text-[hsl(210,10%,70%)] text-xl max-w-2xl mx-auto">
-            Ready to discuss your next offshore project? Our expert team is here to help — 24 hours a day, 7 days a week.
+            Ready to discuss your next offshore project? Our expert team is here to help, 24 hours a day, 7 days a week.
           </p>
         </div>
       </section>
@@ -308,7 +326,7 @@ export default function Contact() {
                 </span>
               </div>
               <h2 className="font-display font-800 text-white text-3xl md:text-4xl mb-8">
-                Our Office
+                Our Offices
               </h2>
 
               {/* Embedded Map */}
@@ -372,14 +390,14 @@ export default function Contact() {
       <section className="py-16 bg-[hsl(210,22%,7%)]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-display font-800 text-white text-3xl">Our Office</h2>
+            <h2 className="font-display font-800 text-white text-3xl">Our Offices</h2>
           </div>
-          <div ref={officesRef} className="reveal-up flex justify-center">
+          <div ref={officesRef} className="reveal-up grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {offices.map((office) => (
               <div
                 key={office.city}
                 data-testid={`card-office-${office.city.toLowerCase()}`}
-                className="gradient-card border border-[hsl(210,15%,16%)] rounded-xl overflow-hidden hover:border-[hsl(199,89%,48%)]/30 transition-all w-full max-w-sm"
+                className="gradient-card border border-[hsl(210,15%,16%)] rounded-xl overflow-hidden hover:border-[hsl(199,89%,48%)]/30 transition-all"
               >
                 <div className="aspect-video overflow-hidden">
                   <img src={office.image} alt={office.city} className="w-full h-full object-cover img-zoom" />

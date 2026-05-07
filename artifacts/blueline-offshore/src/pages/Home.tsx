@@ -205,7 +205,7 @@ export default function Home() {
 
           <p className="max-w-2xl mx-auto text-[hsl(210,10%,75%)] text-lg md:text-xl leading-relaxed mb-10">
             Blueline Offshore delivers world-class marine construction, diving, and subsea engineering
-            services across the globe — safely, efficiently, and with uncompromising quality.
+            services across the globe, safely, efficiently, and with uncompromising quality.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -288,13 +288,13 @@ export default function Home() {
                 <span className="gradient-text">Offshore Excellence</span>
               </h2>
               <p className="text-[hsl(210,10%,65%)] leading-relaxed mb-6">
-                Founded in 2003, Blueline Offshore has grown from a regional diving contractor into a
+                Founded in 1987, Blueline Offshore has grown from a regional diving contractor into a
                 globally recognized offshore services company. We operate across six continents, delivering
                 complex marine projects safely and efficiently.
               </p>
               <p className="text-[hsl(210,10%,65%)] leading-relaxed mb-8">
                 Our multidisciplinary team of 2,000+ professionals brings together expertise in marine
-                engineering, naval architecture, diving operations, and project management — all aligned
+                engineering, naval architecture, diving operations, and project management, all aligned
                 by our unwavering commitment to safety and quality.
               </p>
               <div className="grid grid-cols-2 gap-4 mb-8">

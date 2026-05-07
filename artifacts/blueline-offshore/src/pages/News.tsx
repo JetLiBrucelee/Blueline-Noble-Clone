@@ -18,7 +18,7 @@ const news = [
     category: "Safety",
     date: "March 28, 2025",
     image: "https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=800&q=80&auto=format&fit=crop",
-    excerpt: "We are proud to announce that Blueline Offshore has surpassed 10 million consecutive man-hours without a Lost Time Incident — a testament to our Zero Harm culture and safety leadership.",
+    excerpt: "We are proud to announce that Blueline Offshore has surpassed 10 million consecutive man-hours without a Lost Time Incident, a testament to our Zero Harm culture and safety leadership.",
     featured: false,
   },
   {
