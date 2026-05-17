@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Youtube, ArrowRight } from "lucide-react";
+import { Mail, MapPin, Facebook, Twitter, Linkedin, Youtube, ArrowRight } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -18,13 +18,6 @@ export default function Footer() {
                 className="px-6 py-3 bg-white text-[hsl(199,89%,38%)] font-display font-700 text-sm tracking-wide rounded hover:bg-gray-100 transition-colors flex items-center gap-2">
                 Request a Quote <ArrowRight size={16} />
               </Link>
-            <a
-              href="tel:+17745648357"
-              className="px-6 py-3 border border-white/50 text-white font-display font-600 text-sm tracking-wide rounded hover:bg-white/10 transition-colors"
-              data-testid="footer-cta-call"
-            >
-              Call Us Now
-            </a>
           </div>
         </div>
       </div>
@@ -141,16 +134,6 @@ export default function Footer() {
               ))}
               <li>
                 <a
-                  href="tel:+17745648357"
-                  className="flex items-center gap-3 text-[hsl(210,10%,55%)] text-sm hover:text-[hsl(199,89%,60%)] transition-colors"
-                  data-testid="footer-phone"
-                >
-                  <Phone size={16} className="text-[hsl(199,89%,48%)] flex-shrink-0" />
-                  (774) 564-8357
-                </a>
-              </li>
-              <li>
-                <a
                   href="mailto:support@bluelineoffshore.com"
                   className="flex items-center gap-3 text-[hsl(210,10%,55%)] text-sm hover:text-[hsl(199,89%,60%)] transition-colors"
                   data-testid="footer-email"
@@ -161,14 +144,6 @@ export default function Footer() {
               </li>
             </ul>
 
-            <div className="mt-8 p-4 rounded-lg border border-[hsl(210,15%,16%)] bg-[hsl(210,18%,8%)]">
-              <p className="text-xs text-[hsl(210,10%,50%)] uppercase tracking-wider font-display font-600 mb-1">
-                Emergency 24/7
-              </p>
-              <a href="tel:+17745648357" className="text-[hsl(199,89%,60%)] font-display font-700 text-lg hover:text-white transition-colors">
-                (774) 564-8357
-              </a>
-            </div>
           </div>
         </div>
       </div>

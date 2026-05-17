@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 
 const offices = [
   {
@@ -116,9 +116,7 @@ export default function Contact() {
       <section className="py-10 bg-[hsl(199,89%,38%)]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { icon: Phone, label: "Call Us", value: "(774) 564-8357", href: "tel:+17745648357" },
             { icon: Mail, label: "Email Us", value: "support@bluelineoffshore.com", href: "mailto:support@bluelineoffshore.com" },
-            { icon: Clock, label: "Emergency 24/7", value: "(774) 564-8357", href: "tel:+17745648357" },
           ].map(({ icon: Icon, label, value, href }) => (
             <a
               key={label}
@@ -358,12 +356,6 @@ export default function Contact() {
                 </div>
                 <div className="grid grid-cols-2 gap-4 border-t border-[hsl(210,15%,14%)] pt-4">
                   <div>
-                    <div className="text-[hsl(210,10%,45%)] text-xs mb-1">Main Line</div>
-                    <a href="tel:+17745648357" className="text-[hsl(199,89%,60%)] text-sm font-display font-600 hover:text-white transition-colors">
-                      (774) 564-8357
-                    </a>
-                  </div>
-                  <div>
                     <div className="text-[hsl(210,10%,45%)] text-xs mb-1">Email</div>
                     <a href="mailto:support@bluelineoffshore.com" className="text-[hsl(199,89%,60%)] text-sm font-display font-600 hover:text-white transition-colors">
                       support@bluelineoffshore.com
@@ -372,12 +364,6 @@ export default function Contact() {
                   <div>
                     <div className="text-[hsl(210,10%,45%)] text-xs mb-1">Business Hours</div>
                     <div className="text-[hsl(210,10%,70%)] text-sm">Mon – Fri: 8am – 6pm CT</div>
-                  </div>
-                  <div>
-                    <div className="text-[hsl(210,10%,45%)] text-xs mb-1">Emergency</div>
-                    <a href="tel:+17745648357" className="text-[hsl(199,89%,60%)] text-sm font-display font-600 hover:text-white transition-colors">
-                      (774) 564-8357
-                    </a>
                   </div>
                 </div>
               </div>
@@ -410,12 +396,6 @@ export default function Contact() {
                     <p>{office.zip}</p>
                   </div>
                   <div className="mt-4 pt-4 border-t border-[hsl(210,15%,14%)] space-y-2">
-                    {office.phone && (
-                      <a href={`tel:${office.phone}`} className="flex items-center gap-2 text-xs text-[hsl(210,10%,55%)] hover:text-[hsl(199,89%,60%)] transition-colors">
-                        <Phone size={12} className="text-[hsl(199,89%,48%)]" />
-                        {office.phone}
-                      </a>
-                    )}
                     <a href={`mailto:${office.email}`} className="flex items-center gap-2 text-xs text-[hsl(210,10%,55%)] hover:text-[hsl(199,89%,60%)] transition-colors">
                       <Mail size={12} className="text-[hsl(199,89%,48%)]" />
                       {office.email}

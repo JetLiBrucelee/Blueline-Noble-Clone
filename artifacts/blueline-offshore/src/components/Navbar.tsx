@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
+import { Menu, X, Mail, ChevronDown } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -51,14 +51,6 @@ export default function Navbar() {
     <>
       {/* Top bar */}
       <div className="hidden md:flex bg-[hsl(210,60%,10%)] text-[hsl(210,10%,70%)] text-xs py-2 px-8 justify-end gap-8 border-b border-[hsl(210,15%,16%)]">
-        <a
-          href="tel:+17745648357"
-          className="flex items-center gap-2 hover:text-[hsl(199,89%,60%)] transition-colors"
-          data-testid="link-topbar-phone"
-        >
-          <Phone size={12} />
-          (774) 564-8357
-        </a>
         <a
           href="mailto:support@bluelineoffshore.com"
           className="flex items-center gap-2 hover:text-[hsl(199,89%,60%)] transition-colors"
