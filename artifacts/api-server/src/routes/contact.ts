@@ -3,8 +3,6 @@ import { Resend } from "resend";
 
 const router: IRouter = Router();
 
-const resend = new Resend(process.env["RESEND_API_KEY"]);
-
 router.post("/contact", async (req, res) => {
   const { firstName, lastName, email, phone, company, service, message } = req.body as {
     firstName?: string;
@@ -96,6 +94,12 @@ router.post("/contact", async (req, res) => {
   `;
 
   try {
+    const apiKey = process.env["RESEND_API_KEY"];
+    if (!apiKey) {
+      res.status(500).json({ error: "Email service is not configured." });
+      return;
+    }
+    const resend = new Resend(apiKey);
     const toAddress = process.env["CONTACT_EMAIL"] || "support@bluelineoffshore.com";
     const fromAddress = process.env["FROM_EMAIL"] || "Blueline Offshore <onboarding@resend.dev>";
 
