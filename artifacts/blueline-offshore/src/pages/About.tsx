@@ -1,21 +1,34 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Shield, Award, Users, Globe2, Target, Eye, Heart } from "lucide-react";
 import { Link } from "wouter";
+import { useEffect, useState } from "react";
 
-const leadership = [
-  {
-    name: "Jeffrey Anderson",
-    title: "Founder / CEO",
-    bio: "Founder and driving force behind Blueline Offshore. Over 35 years in the offshore energy industry, growing the company from a regional diving contractor into a globally recognized offshore services firm.",
-    image: "/ceo-jeffrey-anderson.jpg",
-  },
-  {
-    name: "James R. Whitfield",
-    title: "Chief Operating Officer",
-    bio: "30+ years in offshore operations management. Oversees all operational divisions and vessel deployments, ensuring every project is delivered on time and to the highest safety standards.",
-    image: "/coo-james-whitfield.jpg",
-  },
-];
+interface SiteSettings {
+  ceoName: string;
+  ceoImageUrl: string;
+  phone: string;
+  hqAddress: string;
+  hqCity: string;
+}
+
+const DEFAULTS: SiteSettings = {
+  ceoName: "Jeffrey Anderson",
+  ceoImageUrl: "/ceo-jeffrey-anderson.jpg",
+  phone: "(774) 564-8357",
+  hqAddress: "42 Broadway",
+  hqCity: "New York, NY 10004",
+};
+
+function useSiteSettings() {
+  const [settings, setSettings] = useState<SiteSettings>(DEFAULTS);
+  useEffect(() => {
+    fetch("/api/settings")
+      .then(r => r.ok ? r.json() : null)
+      .then(data => { if (data) setSettings(data); })
+      .catch(() => {});
+  }, []);
+  return settings;
+}
 
 const milestones = [
   { year: "1987", event: "Founded in New York as a regional marine diving contractor" },
@@ -38,10 +51,26 @@ const values = [
 ];
 
 export default function About() {
+  const settings = useSiteSettings();
   const missionRef = useScrollReveal<HTMLDivElement>();
   const valuesRef = useScrollReveal<HTMLDivElement>();
   const timelineRef = useScrollReveal<HTMLDivElement>();
   const teamRef = useScrollReveal<HTMLDivElement>();
+
+  const leadership = [
+    {
+      name: settings.ceoName,
+      title: "Founder / CEO",
+      bio: "Founder and driving force behind Blueline Offshore. Over 35 years in the offshore energy industry, growing the company from a regional diving contractor into a globally recognized offshore services firm.",
+      image: settings.ceoImageUrl,
+    },
+    {
+      name: "James R. Whitfield",
+      title: "Chief Operating Officer",
+      bio: "30+ years in offshore operations management. Oversees all operational divisions and vessel deployments, ensuring every project is delivered on time and to the highest safety standards.",
+      image: "/coo-james-whitfield.jpg",
+    },
+  ];
 
   return (
     <div className="pt-20">

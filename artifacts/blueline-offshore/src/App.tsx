@@ -12,29 +12,35 @@ import Fleet from "@/pages/Fleet";
 import Careers from "@/pages/Careers";
 import News from "@/pages/News";
 import Contact from "@/pages/Contact";
+import Admin from "@/pages/Admin";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
 
 function Router() {
   return (
-    <div className="flex flex-col min-h-screen bg-background">
-      <Navbar />
-      <main className="flex-1">
-        <Switch>
-          <Route path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/services" component={Services} />
-          <Route path="/projects" component={Projects} />
-          <Route path="/fleet" component={Fleet} />
-          <Route path="/careers" component={Careers} />
-          <Route path="/news" component={News} />
-          <Route path="/contact" component={Contact} />
-          <Route component={NotFound} />
-        </Switch>
-      </main>
-      <Footer />
-    </div>
+    <Switch>
+      <Route path="/admin" component={Admin} />
+      <Route>
+        <div className="flex flex-col min-h-screen bg-background">
+          <Navbar />
+          <main className="flex-1">
+            <Switch>
+              <Route path="/" component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/services" component={Services} />
+              <Route path="/projects" component={Projects} />
+              <Route path="/fleet" component={Fleet} />
+              <Route path="/careers" component={Careers} />
+              <Route path="/news" component={News} />
+              <Route path="/contact" component={Contact} />
+              <Route component={NotFound} />
+            </Switch>
+          </main>
+          <Footer />
+        </div>
+      </Route>
+    </Switch>
   );
 }
 

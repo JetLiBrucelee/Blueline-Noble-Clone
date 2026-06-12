@@ -1,36 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 
-const offices = [
-  {
-    city: "New York",
-    country: "USA (HQ)",
-    address: "42 Broadway",
-    zip: "New York, NY 10004",
-    phone: "(774) 564-8357",
-    email: "support@bluelineoffshore.com",
-    image: "https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&q=80&auto=format&fit=crop",
-  },
-  {
-    city: "Myrtle Beach",
-    country: "USA",
-    address: "4209 N Kings Hwy",
-    zip: "Myrtle Beach, SC 29577",
-    phone: "(774) 564-8357",
-    email: "support@bluelineoffshore.com",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80&auto=format&fit=crop",
-  },
-  {
-    city: "Anchorage",
-    country: "USA",
-    address: "621 W 6th Ave",
-    zip: "Anchorage, AK 99501",
-    phone: "(774) 564-8357",
-    email: "support@bluelineoffshore.com",
-    image: "https://images.unsplash.com/photo-1531168558166-78dd1e35e671?w=600&q=80&auto=format&fit=crop",
-  },
-];
+interface SiteSettings {
+  ceoName: string;
+  ceoImageUrl: string;
+  phone: string;
+  hqAddress: string;
+  hqCity: string;
+}
+
+const DEFAULTS: SiteSettings = {
+  ceoName: "Jeffrey Anderson",
+  ceoImageUrl: "/ceo-jeffrey-anderson.jpg",
+  phone: "(774) 564-8357",
+  hqAddress: "42 Broadway",
+  hqCity: "New York, NY 10004",
+};
+
+function useSiteSettings() {
+  const [settings, setSettings] = useState<SiteSettings>(DEFAULTS);
+  useEffect(() => {
+    fetch("/api/settings")
+      .then(r => r.ok ? r.json() : null)
+      .then(data => { if (data) setSettings(data); })
+      .catch(() => {});
+  }, []);
+  return settings;
+}
 
 const services = [
   "Marine Construction",
@@ -44,6 +41,38 @@ const services = [
 ];
 
 export default function Contact() {
+  const settings = useSiteSettings();
+
+  const offices = [
+    {
+      city: "New York",
+      country: "USA (HQ)",
+      address: settings.hqAddress,
+      zip: settings.hqCity,
+      phone: settings.phone,
+      email: "support@bluelineoffshore.com",
+      image: "https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&q=80&auto=format&fit=crop",
+    },
+    {
+      city: "Myrtle Beach",
+      country: "USA",
+      address: "4209 N Kings Hwy",
+      zip: "Myrtle Beach, SC 29577",
+      phone: settings.phone,
+      email: "support@bluelineoffshore.com",
+      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80&auto=format&fit=crop",
+    },
+    {
+      city: "Anchorage",
+      country: "USA",
+      address: "621 W 6th Ave",
+      zip: "Anchorage, AK 99501",
+      phone: settings.phone,
+      email: "support@bluelineoffshore.com",
+      image: "https://images.unsplash.com/photo-1531168558166-78dd1e35e671?w=600&q=80&auto=format&fit=crop",
+    },
+  ];
+
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -350,7 +379,7 @@ export default function Contact() {
                   <div>
                     <div className="font-display font-700 text-white text-lg">New York Headquarters</div>
                     <div className="text-[hsl(210,10%,55%)] text-sm mt-1">
-                      42 Broadway<br />New York, NY 10004, USA
+                      {settings.hqAddress}<br />{settings.hqCity}, USA
                     </div>
                   </div>
                 </div>
