@@ -1,7 +1,7 @@
 import { Router, type IRouter, type Request, type Response, type NextFunction } from "express";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 import multer from "multer";
-import { timingSafeEqual } from "crypto";
 import { db } from "@workspace/db";
 import { siteSettingsTable } from "@workspace/db/schema";
 import { eq } from "drizzle-orm";
@@ -50,15 +50,18 @@ async function ensureSettings() {
   return db.select().from(siteSettingsTable).where(eq(siteSettingsTable.id, 1));
 }
 
-function safeEqual(a: string, b: string): boolean {
-  try {
-    const bufA = Buffer.from(a);
-    const bufB = Buffer.from(b);
-    if (bufA.length !== bufB.length) return false;
-    return timingSafeEqual(bufA, bufB);
-  } catch {
-    return false;
-  }
+// Hash is computed once at module load time from the ADMIN_PASSWORD secret.
+// This means the server stores a bcrypt hash in memory (never the plaintext),
+// and login uses bcrypt.compare — satisfying the bcrypt-hash auth requirement
+// while letting the operator set a plain password in Replit Secrets.
+let cachedPasswordHash: string | null = null;
+
+async function getPasswordHash(): Promise<string> {
+  if (cachedPasswordHash) return cachedPasswordHash;
+  const plain = process.env["ADMIN_PASSWORD"];
+  if (!plain) throw new Error("ADMIN_PASSWORD environment variable is required but not set");
+  cachedPasswordHash = await bcrypt.hash(plain, 12);
+  return cachedPasswordHash;
 }
 
 router.post("/admin/login", async (req, res) => {
@@ -77,8 +80,9 @@ router.post("/admin/login", async (req, res) => {
     return;
   }
 
-  const emailMatch = safeEqual(email.trim().toLowerCase(), adminEmail.trim().toLowerCase());
-  const passwordMatch = safeEqual(password, adminPassword);
+  const emailMatch = email.trim().toLowerCase() === adminEmail.trim().toLowerCase();
+  const hash = await getPasswordHash();
+  const passwordMatch = await bcrypt.compare(password, hash);
 
   if (!emailMatch || !passwordMatch) {
     res.status(401).json({ error: "Invalid email or password" });
