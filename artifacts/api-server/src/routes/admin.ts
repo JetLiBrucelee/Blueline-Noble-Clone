@@ -1,7 +1,7 @@
 import { Router, type IRouter, type Request, type Response, type NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import bcrypt from "bcryptjs";
 import multer from "multer";
+import { timingSafeEqual } from "crypto";
 import { db } from "@workspace/db";
 import { siteSettingsTable } from "@workspace/db/schema";
 import { eq } from "drizzle-orm";
@@ -13,9 +13,7 @@ const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 10 
 
 function getJwtSecret(): string {
   const secret = process.env["JWT_SECRET"];
-  if (!secret) {
-    throw new Error("JWT_SECRET environment variable is required but not set");
-  }
+  if (!secret) throw new Error("JWT_SECRET environment variable is required but not set");
   return secret;
 }
 
@@ -52,13 +50,24 @@ async function ensureSettings() {
   return db.select().from(siteSettingsTable).where(eq(siteSettingsTable.id, 1));
 }
 
+function safeEqual(a: string, b: string): boolean {
+  try {
+    const bufA = Buffer.from(a);
+    const bufB = Buffer.from(b);
+    if (bufA.length !== bufB.length) return false;
+    return timingSafeEqual(bufA, bufB);
+  } catch {
+    return false;
+  }
+}
+
 router.post("/admin/login", async (req, res) => {
   const { email, password } = req.body as { email?: string; password?: string };
 
   const adminEmail = process.env["ADMIN_EMAIL"];
-  const adminPasswordHash = process.env["ADMIN_PASSWORD_HASH"];
+  const adminPassword = process.env["ADMIN_PASSWORD"];
 
-  if (!adminEmail || !adminPasswordHash) {
+  if (!adminEmail || !adminPassword) {
     res.status(500).json({ error: "Admin credentials not configured" });
     return;
   }
@@ -68,8 +77,8 @@ router.post("/admin/login", async (req, res) => {
     return;
   }
 
-  const emailMatch = email.trim().toLowerCase() === adminEmail.trim().toLowerCase();
-  const passwordMatch = await bcrypt.compare(password, adminPasswordHash);
+  const emailMatch = safeEqual(email.trim().toLowerCase(), adminEmail.trim().toLowerCase());
+  const passwordMatch = safeEqual(password, adminPassword);
 
   if (!emailMatch || !passwordMatch) {
     res.status(401).json({ error: "Invalid email or password" });
@@ -84,7 +93,7 @@ router.get("/admin/settings", authMiddleware, async (_req, res) => {
   try {
     const rows = await ensureSettings();
     res.json(rows[0]);
-  } catch (err) {
+  } catch {
     res.status(500).json({ error: "Failed to load settings" });
   }
 });
@@ -108,7 +117,7 @@ router.put("/admin/settings", authMiddleware, async (req, res) => {
 
     const rows = await db.update(siteSettingsTable).set(updates).where(eq(siteSettingsTable.id, 1)).returning();
     res.json(rows[0]);
-  } catch (err) {
+  } catch {
     res.status(500).json({ error: "Failed to update settings" });
   }
 });
@@ -132,11 +141,7 @@ router.post("/admin/upload/ceo-image", authMiddleware, upload.single("image"), a
     const bucket = objectStorageClient.bucket(bucketId);
     const file = bucket.file(fileName);
 
-    await file.save(req.file.buffer, {
-      contentType: req.file.mimetype,
-      resumable: false,
-    });
-
+    await file.save(req.file.buffer, { contentType: req.file.mimetype, resumable: false });
     await file.makePublic();
     const publicUrl = `https://storage.googleapis.com/${bucketId}/${fileName}`;
 
