@@ -1,17 +1,23 @@
 import { Router, type IRouter, type Request, type Response, type NextFunction } from "express";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 import multer from "multer";
 import { db } from "@workspace/db";
 import { siteSettingsTable } from "@workspace/db/schema";
 import { eq } from "drizzle-orm";
-import { ObjectStorageService } from "../lib/objectStorage";
+import { objectStorageClient } from "../lib/objectStorage";
+import { randomUUID } from "crypto";
 
 const router: IRouter = Router();
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 10 * 1024 * 1024 } });
 
-const ADMIN_EMAIL = "Timnord47@gmail.com";
-const ADMIN_PASSWORD = "Darasimi0404";
-const JWT_SECRET = process.env["JWT_SECRET"] || "blueline-admin-secret-2024";
+function getJwtSecret(): string {
+  const secret = process.env["JWT_SECRET"];
+  if (!secret) {
+    throw new Error("JWT_SECRET environment variable is required but not set");
+  }
+  return secret;
+}
 
 function authMiddleware(req: Request, res: Response, next: NextFunction): void {
   const auth = req.headers.authorization;
@@ -20,10 +26,10 @@ function authMiddleware(req: Request, res: Response, next: NextFunction): void {
     return;
   }
   try {
-    jwt.verify(auth.slice(7), JWT_SECRET);
+    jwt.verify(auth.slice(7), getJwtSecret());
     next();
   } catch {
-    res.status(401).json({ error: "Invalid token" });
+    res.status(401).json({ error: "Invalid or expired token" });
   }
 }
 
@@ -44,14 +50,29 @@ async function ensureSettings() {
 
 router.post("/admin/login", async (req, res) => {
   const { email, password } = req.body as { email?: string; password?: string };
-  if (
-    email?.trim().toLowerCase() !== ADMIN_EMAIL.toLowerCase() ||
-    password !== ADMIN_PASSWORD
-  ) {
+
+  const adminEmail = process.env["ADMIN_EMAIL"];
+  const adminPasswordHash = process.env["ADMIN_PASSWORD_HASH"];
+
+  if (!adminEmail || !adminPasswordHash) {
+    res.status(500).json({ error: "Admin credentials not configured" });
+    return;
+  }
+
+  if (!email || !password) {
+    res.status(400).json({ error: "Email and password are required" });
+    return;
+  }
+
+  const emailMatch = email.trim().toLowerCase() === adminEmail.trim().toLowerCase();
+  const passwordMatch = await bcrypt.compare(password, adminPasswordHash);
+
+  if (!emailMatch || !passwordMatch) {
     res.status(401).json({ error: "Invalid email or password" });
     return;
   }
-  const token = jwt.sign({ role: "admin" }, JWT_SECRET, { expiresIn: "7d" });
+
+  const token = jwt.sign({ role: "admin" }, getJwtSecret(), { expiresIn: "7d" });
   res.json({ token });
 });
 
@@ -102,8 +123,6 @@ router.post("/admin/upload/ceo-image", authMiddleware, upload.single("image"), a
       return;
     }
 
-    const { objectStorageClient } = await import("../lib/objectStorage");
-    const { randomUUID } = await import("crypto");
     const ext = req.file.originalname.split(".").pop() || "jpg";
     const fileName = `${privateDir}/ceo-${randomUUID()}.${ext}`;
     const bucket = objectStorageClient.bucket(bucketId);

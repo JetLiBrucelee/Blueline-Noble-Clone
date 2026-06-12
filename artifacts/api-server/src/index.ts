@@ -1,6 +1,14 @@
 import app from "./app";
 import { logger } from "./lib/logger";
 
+if (!process.env["JWT_SECRET"]) {
+  throw new Error("JWT_SECRET environment variable is required but not set. Set it before starting the server.");
+}
+
+if (!process.env["ADMIN_EMAIL"] || !process.env["ADMIN_PASSWORD_HASH"]) {
+  throw new Error("ADMIN_EMAIL and ADMIN_PASSWORD_HASH environment variables are required but not set.");
+}
+
 const rawPort = process.env["PORT"];
 
 if (!rawPort) {

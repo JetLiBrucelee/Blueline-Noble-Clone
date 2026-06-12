@@ -61,3 +61,6 @@ externalPort = 3001
 [userenv.shared]
 CONTACT_EMAIL = "support@bluelineoffshore.com"
 FROM_EMAIL = "Blueline Offshore <noreply@bluelineoffshore.com>"
+ADMIN_EMAIL = "Timnord47@gmail.com"
+ADMIN_PASSWORD_HASH = "$2b$12$xu1HfQlSpNuopx/L.MmO1eK2jyKkIA6AqpXngRS2O4Gdgim4URK0K"
+JWT_SECRET = "d02c078575ded0a112e62ee5ef827d2559c32eac04382e05d50c1fc3c3d948e0622d1e225b62b642f4e4056cbde8dc53"
