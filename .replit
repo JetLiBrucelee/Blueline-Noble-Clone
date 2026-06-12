@@ -70,3 +70,4 @@ externalPort = 3002
 CONTACT_EMAIL = "support@bluelineoffshore.com"
 FROM_EMAIL = "Blueline Offshore <noreply@bluelineoffshore.com>"
 ADMIN_EMAIL = "Timnord47@gmail.com"
+ADMIN_BCRYPT_HASH = "$2b$12$s9WiuSyBtmbcyrgQnbJMd.aUdEP.1OtjTat2gT/RJQwgaf8u/LEsO"
