@@ -5,8 +5,8 @@ if (!process.env["JWT_SECRET"]) {
   throw new Error("JWT_SECRET environment variable is required but not set. Set it before starting the server.");
 }
 
-if (!process.env["ADMIN_EMAIL"] || !process.env["ADMIN_PASSWORD_HASH"]) {
-  throw new Error("ADMIN_EMAIL and ADMIN_PASSWORD_HASH environment variables are required but not set. Set them in Replit Secrets.");
+if (!process.env["ADMIN_EMAIL"] || !process.env["ADMIN_PASSWORD"]) {
+  throw new Error("ADMIN_EMAIL and ADMIN_PASSWORD environment variables are required but not set. Set them in Replit Secrets.");
 }
 
 const rawPort = process.env["PORT"];

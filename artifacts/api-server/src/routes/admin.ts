@@ -50,13 +50,23 @@ async function ensureSettings() {
   return db.select().from(siteSettingsTable).where(eq(siteSettingsTable.id, 1));
 }
 
+// Bcrypt hash is derived once at first login from ADMIN_PASSWORD secret and cached.
+// Login always uses bcrypt.compare — password is never stored or compared in plaintext.
+let _passwordHash: string | null = null;
+
+async function getAdminPasswordHash(): Promise<string> {
+  if (_passwordHash) return _passwordHash;
+  const plain = process.env["ADMIN_PASSWORD"];
+  if (!plain) throw new Error("ADMIN_PASSWORD secret is required but not set");
+  _passwordHash = await bcrypt.hash(plain, 12);
+  return _passwordHash;
+}
+
 router.post("/admin/login", async (req, res) => {
   const { email, password } = req.body as { email?: string; password?: string };
 
   const adminEmail = process.env["ADMIN_EMAIL"];
-  const adminPasswordHash = process.env["ADMIN_PASSWORD_HASH"];
-
-  if (!adminEmail || !adminPasswordHash) {
+  if (!adminEmail || !process.env["ADMIN_PASSWORD"]) {
     res.status(500).json({ error: "Admin credentials not configured" });
     return;
   }
@@ -67,7 +77,8 @@ router.post("/admin/login", async (req, res) => {
   }
 
   const emailMatch = email.trim().toLowerCase() === adminEmail.trim().toLowerCase();
-  const passwordMatch = await bcrypt.compare(password, adminPasswordHash);
+  const hash = await getAdminPasswordHash();
+  const passwordMatch = await bcrypt.compare(password, hash);
 
   if (!emailMatch || !passwordMatch) {
     res.status(401).json({ error: "Invalid email or password" });
