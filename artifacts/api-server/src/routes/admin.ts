@@ -26,7 +26,11 @@ function authMiddleware(req: Request, res: Response, next: NextFunction): void {
     return;
   }
   try {
-    jwt.verify(auth.slice(7), getJwtSecret());
+    const payload = jwt.verify(auth.slice(7), getJwtSecret()) as jwt.JwtPayload;
+    if (payload?.role !== "admin") {
+      res.status(403).json({ error: "Forbidden" });
+      return;
+    }
     next();
   } catch {
     res.status(401).json({ error: "Invalid or expired token" });
