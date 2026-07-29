@@ -45,8 +45,8 @@ export default function Contact() {
 
   const offices = [
     {
-      city: "New York",
-      country: "USA (HQ)",
+      city: "Headquarters",
+      country: "Global HQ",
       address: settings.hqAddress,
       zip: settings.hqCity,
       phone: settings.phone,
@@ -377,7 +377,7 @@ export default function Contact() {
                     <MapPin size={20} className="text-[hsl(199,89%,60%)]" />
                   </div>
                   <div>
-                    <div className="font-display font-700 text-white text-lg">New York Headquarters</div>
+                    <div className="font-display font-700 text-white text-lg">Headquarters</div>
                     <div className="text-[hsl(210,10%,55%)] text-sm mt-1">
                       {settings.hqAddress}<br />{settings.hqCity}, USA
                     </div>
