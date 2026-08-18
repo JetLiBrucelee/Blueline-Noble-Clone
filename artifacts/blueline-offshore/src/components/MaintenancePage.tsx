@@ -43,7 +43,7 @@ export default function MaintenancePage() {
         </h1>
 
         <p className="text-[hsl(210,10%,60%)] text-base leading-relaxed mb-10">
-          This website is temporarily unavailable. Please get more usage on API.
+          We are currently performing maintenance. We'll be back online shortly — thank you for your patience.
         </p>
 
         {/* Bottom accent */}
