@@ -2,7 +2,7 @@ import { Router, type IRouter, type Request, type Response, type NextFunction } 
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import rateLimit from "express-rate-limit";
-import { db } from "@workspace/db";
+import { db, pool } from "@workspace/db";
 import { siteStatusTable } from "@workspace/db/schema";
 import { eq } from "drizzle-orm";
 
@@ -28,8 +28,9 @@ export function setPausedState(value: boolean): void {
 /**
  * Initialise owner state at startup:
  * 1. Hash OWNER_PASSWORD with bcrypt and cache in memory.
- * 2. Load the current pause state from DB.
- * Throws on any failure — the server must not start with missing credentials or a broken DB.
+ * 2. Ensure the site_status table and singleton row exist (production-safe).
+ * 3. Load the current pause state.
+ * Throws on any failure — the server must not start in an unknown state.
  */
 export async function loadInitialPauseState(): Promise<void> {
   const ownerPassword = process.env["OWNER_PASSWORD"];
@@ -38,15 +39,26 @@ export async function loadInitialPauseState(): Promise<void> {
   // Hash once at startup; result lives only in process memory.
   ownerPasswordHashCache = await bcrypt.hash(ownerPassword, 12);
 
-  // Do NOT catch DB errors here — a missing site_status table or DB failure
-  // must cause startup to abort, not silently default to active.
+  // Ensure the table exists — safe to run on every startup against any DB,
+  // whether freshly provisioned or already containing the table.
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS site_status (
+      id         INTEGER PRIMARY KEY DEFAULT 1,
+      paused     BOOLEAN NOT NULL DEFAULT FALSE,
+      paused_at  TIMESTAMPTZ
+    )
+  `);
+
+  // Ensure the singleton row exists.
+  await pool.query(`
+    INSERT INTO site_status (id, paused)
+    VALUES (1, FALSE)
+    ON CONFLICT (id) DO NOTHING
+  `);
+
+  // Load current state — throws if DB is unreachable.
   const rows = await db.select().from(siteStatusTable).where(eq(siteStatusTable.id, 1));
-  if (rows.length === 0) {
-    await db.insert(siteStatusTable).values({ id: 1, paused: false });
-    pausedCache = false;
-  } else {
-    pausedCache = rows[0]!.paused;
-  }
+  pausedCache = rows[0]!.paused;
 }
 
 function getOwnerJwtSecret(): string {
