@@ -34,9 +34,10 @@ app.use(express.urlencoded({ extended: true }));
  * Global pause middleware.
  * When the site is paused, all /api routes return 503 EXCEPT:
  *   - /api/owner-control/* (so the owner can still restore)
+ *   - /api/healthz         (deployment health probes must always return 200)
  */
 app.use("/api", (req: Request, res: Response, next: NextFunction) => {
-  if (getPausedState() && !req.path.startsWith("/owner-control")) {
+  if (getPausedState() && !req.path.startsWith("/owner-control") && req.path !== "/healthz") {
     res.status(503).json({ error: "Service temporarily unavailable" });
     return;
   }
