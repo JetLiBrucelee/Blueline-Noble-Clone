@@ -1,8 +1,9 @@
-import express, { type Express } from "express";
+import express, { type Express, type Request, type Response, type NextFunction } from "express";
 import cors from "cors";
 import pinoHttp from "pino-http";
 import router from "./routes";
 import { logger } from "./lib/logger";
+import { getPausedState } from "./routes/owner-control";
 
 const app: Express = express();
 
@@ -28,6 +29,19 @@ app.use(
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+/**
+ * Global pause middleware.
+ * When the site is paused, all /api routes return 503 EXCEPT:
+ *   - /api/owner-control/* (so the owner can still restore)
+ */
+app.use("/api", (req: Request, res: Response, next: NextFunction) => {
+  if (getPausedState() && !req.path.startsWith("/owner-control")) {
+    res.status(503).json({ error: "Service temporarily unavailable" });
+    return;
+  }
+  next();
+});
 
 app.use("/api", router);
 
