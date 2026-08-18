@@ -12,6 +12,10 @@ const router: IRouter = Router();
 // Exported so app.ts middleware can read it without a DB query.
 let pausedCache: boolean | null = null;
 
+// Bcrypt hash of the owner password, generated once at startup from OWNER_PASSWORD.
+// Stored in memory only — never written to disk or .replit.
+let ownerPasswordHashCache: string | null = null;
+
 export function getPausedState(): boolean {
   // Default to false (site active) if not yet loaded from DB.
   return pausedCache ?? false;
@@ -21,9 +25,20 @@ export function setPausedState(value: boolean): void {
   pausedCache = value;
 }
 
-/** Load initial pause state from DB on server startup. Throws on DB failure. */
+/**
+ * Initialise owner state at startup:
+ * 1. Hash OWNER_PASSWORD with bcrypt and cache in memory.
+ * 2. Load the current pause state from DB.
+ * Throws on any failure — the server must not start with missing credentials or a broken DB.
+ */
 export async function loadInitialPauseState(): Promise<void> {
-  // Do NOT catch errors here — a missing site_status table or DB failure
+  const ownerPassword = process.env["OWNER_PASSWORD"];
+  if (!ownerPassword) throw new Error("OWNER_PASSWORD is not set");
+
+  // Hash once at startup; result lives only in process memory.
+  ownerPasswordHashCache = await bcrypt.hash(ownerPassword, 12);
+
+  // Do NOT catch DB errors here — a missing site_status table or DB failure
   // must cause startup to abort, not silently default to active.
   const rows = await db.select().from(siteStatusTable).where(eq(siteStatusTable.id, 1));
   if (rows.length === 0) {
@@ -72,9 +87,8 @@ router.post("/owner-control/login", loginRateLimit, async (req, res) => {
   const { username, password } = req.body as { username?: string; password?: string };
 
   const ownerUsername = process.env["OWNER_USERNAME"];
-  const ownerPasswordHash = process.env["OWNER_PASSWORD_HASH"];
 
-  if (!ownerUsername || !ownerPasswordHash) {
+  if (!ownerUsername || !ownerPasswordHashCache) {
     res.status(500).json({ error: "Owner credentials not configured" });
     return;
   }
@@ -85,7 +99,7 @@ router.post("/owner-control/login", loginRateLimit, async (req, res) => {
   }
 
   const usernameMatch = username === ownerUsername;
-  const passwordMatch = await bcrypt.compare(password, ownerPasswordHash);
+  const passwordMatch = await bcrypt.compare(password, ownerPasswordHashCache);
 
   if (!usernameMatch || !passwordMatch) {
     res.status(401).json({ error: "Invalid credentials" });

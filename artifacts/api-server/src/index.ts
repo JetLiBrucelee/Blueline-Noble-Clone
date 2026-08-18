@@ -10,8 +10,8 @@ if (!process.env["ADMIN_EMAIL"] || !process.env["ADMIN_BCRYPT_HASH"]) {
   throw new Error("ADMIN_EMAIL and ADMIN_BCRYPT_HASH environment variables are required but not set.");
 }
 
-if (!process.env["OWNER_USERNAME"] || !process.env["OWNER_PASSWORD_HASH"] || !process.env["OWNER_JWT_SECRET"]) {
-  throw new Error("OWNER_USERNAME, OWNER_PASSWORD_HASH, and OWNER_JWT_SECRET environment variables are required but not set.");
+if (!process.env["OWNER_USERNAME"] || !process.env["OWNER_PASSWORD"] || !process.env["OWNER_JWT_SECRET"]) {
+  throw new Error("OWNER_USERNAME, OWNER_PASSWORD, and OWNER_JWT_SECRET environment variables are required but not set.");
 }
 
 const rawPort = process.env["PORT"];
